@@ -26,7 +26,37 @@
     <title>Weather Dashboard</title>
 </head>
 <body>
-    <h1>Weather Dashboard</h1>
+    <nav class="navbar navbar-info bg-info" style="margin-bottom:20px">
+        <span class="navbar-text text-center w-100" style = "font-size:50px">
+          Weather Dashboard
+        </span>
+      </nav>
+    <div class="container">
+        <div class="row">
+            <div class="col-4 bg-white">
+                <h2>Search for a City:</h2>
+                <div class="input-group mb-3">
+                    <input id="city-input" type="text" class="form-control" placeholder="Enter city name">
+                    
+                </div>
+                <button type="button" class="btn btn-primary w-100">Search</button>
+            </div>
+            <div class="col-8">
+                <div class="row bg-danger">
+                    <div class="col-12">
+                        <h3>Weather Info Here</h3>
+                    </div>
+                </div>
+                <div class="row bg-warning">
+                    <div class="col-12">
+                        <h3>5-Day Forecast</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
 
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <script type="text/javascript" src="assets/js/script.js"></script>
