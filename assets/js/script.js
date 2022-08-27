@@ -5,6 +5,7 @@ var inputTextEl = $("#city-input");
 var inputBtnEl = $(".btn-entry");
 var deleteBtnEl = $(".btn-delete");
 var getName = "";
+var savedLocations = [];
 
 
 function GetWeather(searchName){
@@ -72,16 +73,12 @@ function UnixToDate(newUnix){
 
 var handleFormSubmit = function (event) {
     event.preventDefault();
-    
     var nameInput = inputTextEl.val();
     if(!nameInput){
         console.log('You need to pick a city!');
         return;
     }
-    // var commentInput = commentInputEl.val();
-    // console.log(nameInput);
-    GetWeather(nameInput);
-    
+    GetWeather(nameInput);    
 };
 
 var handleDeleteSubmit = function (event) {
@@ -89,7 +86,14 @@ var handleDeleteSubmit = function (event) {
 }
 
 function SaveEntry(name){
- console.log("" + name);
+//  console.log("Ayy" + name + savedLocations);
+ for(var i = 0; i < savedLocations.length; i++){
+    if(name == savedLocations[i]){
+        console.log("ENTRY ALREADY EXISTS: " + savedLocations[i]);
+        return;
+    }
+ }
+
 }
 
 inputBtnEl.on('click', handleFormSubmit);
