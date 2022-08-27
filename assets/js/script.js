@@ -33,14 +33,11 @@ function TestThing(searchName){
         .then(function (data){
             console.log(data);
             DoCurrentDay(data);
-            // var h2El = document.createElement('h2');
-            // var tempEl = document.createElement('p');
-            // h2El.textContent = getName;
-            // tempEl.textContent = 'TEMP:' + data.current.temp;
-            // document.body.appendChild(h2El);
-            // document.body.appendChild(tempEl);
-
-            
+            for(var i = 0; i < 6; i++){
+                Do5Day(data, i);
+            }
+            // Do5Day(data, 1);
+            // Do5Day(data, 2);
         });
       });
 }
@@ -55,6 +52,20 @@ function DoCurrentDay(data){
     $(".current-day-wind").html("Wind: " + data.current.wind_speed);
     $(".current-day-humidity").html("Humidity: " + data.current.humidity);
     $(".current-day-uvi").html("UV Index: " + data.current.uvi);
+}
+
+function Do5Day(data, newDay){
+    $(".5-day-" + newDay).find(".5day-date").html("" + (UnixToDate(data.daily[newDay].dt)));
+
+    var newIcon = data.daily[newDay].weather[0].icon;
+    var getImage = $(".5-day-" + newDay).find(".5day-image");
+    getImage.attr("src", `https://openweathermap.org/img/wn/${newIcon}@2x.png`);
+    getImage.attr("height", "40px");
+
+    $(".5-day-" + newDay).find(".5day-temp").html("Temp: " + data.daily[newDay].temp.day);
+    $(".5-day-" + newDay).find(".5day-wind").html("Wind: " + data.daily[newDay].wind_speed);
+    $(".5-day-" + newDay).find(".5day-humidity").html("Temp: " + data.daily[newDay].humidity);
+
 }
 
 // console.log("NEW DATE " + UnixToDate(1661619600));
