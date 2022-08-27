@@ -6,6 +6,7 @@ var inputBtnEl = $(".btn-entry");
 var deleteBtnEl = $(".btn-delete");
 var getName = "";
 var savedLocations = [];
+var generateButtons = [];
 
 
 function GetWeather(searchName){
@@ -83,23 +84,56 @@ var handleFormSubmit = function (event) {
 
 var handleDeleteSubmit = function (event) {
     console.log("Delete");
+    for(var i = generateButtons.length -1; i > 0; i--){
+        generateButtons[i].remove();
+    }
+    $(".saved-locations").css("display","none");
+    savedLocations = [];
+    localStorage.setItem("saved", JSON.stringify(savedLocations));
 }
 
 function SaveEntry(name){
 //  console.log("Ayy" + name + savedLocations);
- for(var i = 0; i < savedLocations.length; i++){
-    if(name == savedLocations[i]){
-        console.log("ENTRY ALREADY EXISTS: " + savedLocations[i]);
-        return;
+if(savedLocations){
+    for(var i = 0; i < savedLocations.length; i++){
+        if(name == savedLocations[i]){
+            console.log("ENTRY ALREADY EXISTS: " + savedLocations[i]);
+            return;
+        }
     }
- }
+}
+if(!savedLocations){
+    savedLocations = [];
+}
+savedLocations.push(name);
+localStorage.setItem("saved", JSON.stringify(savedLocations));
+GenerateButton(savedLocations.length + 1, name);
 
 }
 
+function GenerateButton(newID, newName){
+    console.log("to append: " + newID + " " + newName);
+    $(".saved-locations").css("display","block");
+    var newButton = $(".saved-buttons").append(`<button>${newName}</button>`);
+    generateButtons.push(newButton);
+}
+
+function LoadSave(){
+    savedLocations = JSON.parse(localStorage.getItem("saved"));
+    console.log(savedLocations);
+
+    for(var i = 0; i < savedLocations.length; i++){
+        GenerateButton(i, savedLocations[i]);
+    }
+}
+
+
 inputBtnEl.on('click', handleFormSubmit);
 deleteBtnEl.on('click', handleDeleteSubmit);
-//   $('#city-input').on('submit', handleFormSubmit);
 
-GetWeather("Chicago");
 
 $(".saved-locations").css("display","none");
+LoadSave();
+GetWeather("Chicago");
+
+
