@@ -1,13 +1,13 @@
 // var apiKey = `699d2eebd353f5a54a5616496ebbccee`;
 var apiKey = `485bbc753e29e9770f09ca55c32c6d79`;
 var weatherURL = `http://api.openweathermap.org/geo/1.0/direct`;
-var currentDayImage = $(".current-day-image");
-// imageTest.html("");
-// imageTest.src="https://openweathermap.org/img/wn/10d@2x.png";
+var inputTextEl = $("#city-input");
+var inputBtnEl = $(".btn-entry");
+var deleteBtnEl = $(".btn-delete");
 var getName = "";
 
 
-function TestThing(searchName){
+function GetWeather(searchName){
     var qVar = searchName;
     var requestUrl = `https://api.openweathermap.org/geo/1.0/direct?q=${qVar}&appid=${apiKey}`;
 
@@ -22,8 +22,6 @@ function TestThing(searchName){
         var getLat = data[0].lat;
         var getLon = data[0].lon;
         getName = data[0].name;
-        // console.log("LAT LON NAME " + getLat + getLon + getName);
-        
         
         var oneCall = `https://api.openweathermap.org/data/2.5/onecall?lat=${getLat}&lon=${getLon}&appid=${apiKey}&units=imperial&exclude=hourly,minutely`;
         fetch(oneCall)
@@ -32,12 +30,11 @@ function TestThing(searchName){
         })
         .then(function (data){
             console.log(data);
+            SaveEntry(getName);
             DoCurrentDay(data);
             for(var i = 0; i < 6; i++){
                 Do5Day(data, i);
             }
-            // Do5Day(data, 1);
-            // Do5Day(data, 2);
         });
       });
 }
@@ -45,6 +42,7 @@ function TestThing(searchName){
 function DoCurrentDay(data){
     
     var newIcon = data.current.weather[0].icon;
+    var currentDayImage = $(".current-day-image");
     $(".current-day-h3").html("" + getName + " " + UnixToDate(data.current.dt));
     currentDayImage.attr("src", `https://openweathermap.org/img/wn/${newIcon}@2x.png`);
     currentDayImage.attr("height", "40px");
@@ -68,10 +66,36 @@ function Do5Day(data, newDay){
 
 }
 
-// console.log("NEW DATE " + UnixToDate(1661619600));
-
 function UnixToDate(newUnix){
     return moment(newUnix, 'X').format("MM/DD/YYYY");
 }
 
-TestThing("Chicago");
+var handleFormSubmit = function (event) {
+    event.preventDefault();
+    
+    var nameInput = inputTextEl.val();
+    if(!nameInput){
+        console.log('You need to pick a city!');
+        return;
+    }
+    // var commentInput = commentInputEl.val();
+    // console.log(nameInput);
+    GetWeather(nameInput);
+    
+};
+
+var handleDeleteSubmit = function (event) {
+    console.log("Delete");
+}
+
+function SaveEntry(name){
+ console.log("" + name);
+}
+
+inputBtnEl.on('click', handleFormSubmit);
+deleteBtnEl.on('click', handleDeleteSubmit);
+//   $('#city-input').on('submit', handleFormSubmit);
+
+GetWeather("Chicago");
+
+$(".saved-locations").css("display","none");
