@@ -9,7 +9,7 @@ var getName = "";
 
 function TestThing(searchName){
     var qVar = searchName;
-    var requestUrl = `http://api.openweathermap.org/geo/1.0/direct?q=${qVar}&appid=${apiKey}`;
+    var requestUrl = `https://api.openweathermap.org/geo/1.0/direct?q=${qVar}&appid=${apiKey}`;
 
     var toJSon = function(response){
         return response.json();
