@@ -26,29 +26,29 @@
     <title>Weather Dashboard</title>
 </head>
 <body>
-    <nav class="navbar navbar-info bg-info" style="margin-bottom:20px">
-        <span class="navbar-text text-center w-100" style = "font-size:50px">
+    <nav class="navbar navbar-info bg-primary" style="margin-bottom:20px">
+        <span class="navbar-text text-center w-100 text-white" style = "font-size:50px ">
           Weather Dashboard
         </span>
       </nav>
     <div class="container">
-        <div class="row">
+        <div class="row w-100">
             <div class="col-4 bg-white">
                 <h2>Search for a City:</h2>
                 <div class="input-group mb-3">
-                    <input id="city-input" type="text" class="form-control" placeholder="Enter city name">
+                    <input id="city-input" type="text" class="form-control" placeholder="Enter city name" >
                     
                     <button type="button" class="btn btn-primary btn-entry w-100" style="margin-top:10px">Search</button>
                 </div>
                 <div class="saved-locations">
                 <hr/>
-                  <div class="saved-buttons col-12"></div>
+                  <div class="saved-buttons w-100"></div>
                   <hr/>
-                  <button type="button" class="btn btn-danger btn-delete w-100" style="margin-top:10px">Delete All</button>
+                  <button type="button" class="btn btn-danger btn-delete w-100 mb-3" style="margin-top:10px">Delete All</button>
                 </div>
 
             </div>
-            <div class="col-8" style="display:block">
+            <div class="col-8 weather-display" style="display:block">
                 <div class="row" style ="border: 1px solid black">
                     <div class="col-12" style="margin:10px">
                       <div class="row">
@@ -58,56 +58,54 @@
                       <div class="row"><h5 class = "current-day-temp"></h5></div>
                       <div class="row"><h5 class = "current-day-wind"></h5></div>
                       <div class="row"><h5 class = "current-day-humidity"></h5></div>
-                      <div class="row"><h5 class = "current-day-uvi"></h5></div>
+                      <div class="row"><h5 class = "current-day-uvi" ></h5>&nbsp;<h5 class="uvi rounded text-white" style="padding: 0px 5px 0px" ></h5></div>
             
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-12">
                       <h4 style ="margin:5px 0 0 -10px">5-Day Forecast</h4>
-                      <div class="row justify-content-evenly">
+                      <div class="row mt-2 justify-content-between">
                        
-                        <div class="col-2 5-day-1 text-white" style="margin:10px">
-                          <div class="row 5day-date"></div>
+                        <div class="col dayThing mr-2 5-day-1 text-white">
+                          <div class="row pl-2 mt-1 5day-date"></div>
                           <div class="row"><img class="row 5day-image" src="" style="margin-left:1px"></img></div>
-                          <div class="row 5day-temp"></div>
-                          <div class="row 5day-wind"></div>
-                          <div class="row 5day-humidity"></div>
+                          <div class="row pl-2 mt-1 w-100 pb-1 5day-temp"></div>
+                          <div class="row pl-2 mt-1 w-100 pb-1 5day-wind"></div>
+                          <div class="row pl-2 mt-1 w-100 pb-1 5day-humidity"></div>
                         </div>
 
-                        <div class="col-2 5-day-2 text-white" style="margin:10px">
-                          <div class="row 5day-date"></div>
+                        <div class="col dayThing mr-2 5-day-2 text-white">
+                          <div class="row pl-2 mt-1 5day-date"></div>
                           <div class="row"><img class="row 5day-image" src="" style="margin-left:1px"></img></div>
-                          <div class="row 5day-temp"></div>
-                          <div class="row 5day-wind"></div>
-                          <div class="row 5day-humidity"></div>
+                          <div class="row pl-2 mt-1 w-100 pb-1 5day-temp"></div>
+                          <div class="row pl-2 mt-1 w-100 pb-1 5day-wind"></div>
+                          <div class="row pl-2 mt-1 w-100 pb-1 5day-humidity"></div>
                         </div>
 
-                        <div class="col-2 5-day-3 text-white" style="margin:10px">
-                          <div class="row 5day-date"></div>
+                        <div class="col dayThing mr-2 5-day-3 text-white">
+                          <div class="row pl-2 mt-1 5day-date"></div>
                           <div class="row"><img class="row 5day-image" src="" style="margin-left:1px"></img></div>
-                          <div class="row 5day-temp"></div>
-                          <div class="row 5day-wind"></div>
-                          <div class="row 5day-humidity"></div>
+                          <div class="row pl-2 mt-1 w-100 pb-1 5day-temp"></div>
+                          <div class="row pl-2 mt-1 w-100 pb-1 5day-wind"></div>
+                          <div class="row pl-2 mt-1 w-100 pb-1 5day-humidity"></div>
                         </div>
 
-                        <div class="col-2 5-day-4 text-white" style="margin:10px">
-                          <div class="row 5day-date"></div>
+                        <div class="col dayThing mr-2 5-day-4 text-white">
+                          <div class="row pl-2 mt-1 5day-date"></div>
                           <div class="row"><img class="row 5day-image" src="" style="margin-left:1px"></img></div>
-                          <div class="row 5day-temp"></div>
-                          <div class="row 5day-wind"></div>
-                          <div class="row 5day-humidity"></div>
+                          <div class="row pl-2 mt-1 w-100 pb-1 5day-temp"></div>
+                          <div class="row pl-2 mt-1 w-100 pb-1 5day-wind"></div>
+                          <div class="row pl-2 mt-1 w-100 pb-1 5day-humidity"></div>
                         </div>
 
-                        <div class="col-2 5-day-5 text-white" style="margin:10px">
-                          <div class="row 5day-date"></div>
+                        <div class="col dayThing mr-2 5-day-5 text-white">
+                          <div class="row pl-2 mt-1 5day-date"></div>
                           <div class="row"><img class="row 5day-image" src="" style="margin-left:1px"></img></div>
-                          <div class="row 5day-temp"></div>
-                          <div class="row 5day-wind"></div>
-                          <div class="row 5day-humidity"></div>
+                          <div class="row pl-2 mt-1 w-100 pb-1 5day-temp"></div>
+                          <div class="row pl-2 mt-1 w-100 pb-1 5day-wind"></div>
+                          <div class="row pl-2 mt-1 w-100 pb-1 5day-humidity"></div>
                         </div>
-                        
-                        
                       </div>
                     </div>
                 </div>
