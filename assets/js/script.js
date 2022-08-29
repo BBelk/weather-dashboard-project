@@ -1,5 +1,7 @@
+// var apiKey = `0826b9a0e62a775f0b632377ad6cfd9f`;
 // var apiKey = `699d2eebd353f5a54a5616496ebbccee`;
-var apiKey = `485bbc753e29e9770f09ca55c32c6d79`;
+var apiKey = `692efab00ae66e9f48137e6ea4766fcd`;
+// var apiKey = `485bbc753e29e9770f09ca55c32c6d79`;
 var weatherURL = `http://api.openweathermap.org/geo/1.0/direct`;
 var inputTextEl = $("#city-input");
 var inputBtnEl = $(".btn-entry");
@@ -26,7 +28,7 @@ function GetWeather(searchName){
         var getLon = data[0].lon;
         getName = data[0].name;
         
-        var oneCall = `https://api.openweathermap.org/data/2.5/onecall?lat=${getLat}&lon=${getLon}&appid=${apiKey}&units=imperial&exclude=hourly,minutely`;
+        var oneCall = `https://api.openweathermap.org/data/3.0/onecall?lat=${getLat}&lon=${getLon}&appid=${apiKey}&units=imperial&exclude=hourly,minutely`;
         fetch(oneCall)
         .then(function(response) {
             return response.json();
